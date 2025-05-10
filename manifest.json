@@ -1,0 +1,22 @@
+{
+  "name": "Figma to Rust UI Exporter",
+  "id": "1453452362453262456345",
+  "api": "1.0.0",
+  "main": "code.js",
+  "ui": "ui.html",
+  "documentAccess": "dynamic-page",
+   "networkAccess": {
+    "allowedDomains": ["none"]
+   },
+  "editorType": ["figma"],
+  "menu": [
+    {
+      "name": "Export UI to Rust",
+      "command": "export-ui"
+    },
+    {
+      "name": "Settings",
+      "command": "settings"
+    }
+  ]
+} 
