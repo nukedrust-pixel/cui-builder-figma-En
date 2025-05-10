@@ -1,74 +1,77 @@
 # Figma to Rust UI Exporter
 
-Плагин для Figma, который позволяет экспортировать UI-дизайны в код для Rust-игр.
+![Screenshot](https://i.ibb.co/DHpQktTT/image.png)
 
-## Возможности
+A plugin for Figma that allows you to export UI designs into code for Rust games.
 
-- Экспорт UI-дизайнов из Figma в готовый C# код для Rust
-- Правильная обработка ограничений и привязок элементов
-- Поддержка основных элементов UI: фреймы, тексты, векторы
-- Автоматический экспорт и интеграция изображений в формате PNG
-- Генерация полноценных функций для добавления и удаления UI
+## Features
 
-## Установка
+- Export UI designs from Figma into ready-to-use C# code for Rust
+- Correct handling of constraints and element anchoring
+- Support for core UI elements: frames, texts, vectors
+- Automatic export and integration of images in PNG format
+- Generation of complete functions for adding and removing UI
 
-### Локальная установка (для разработки)
+## Installation
 
-1. Скачайте или клонируйте этот репозиторий
-2. Откройте Figma и создайте новый проект или откройте существующий
-3. Перейдите в меню **Plugins** -> **Development** -> **New Plugin...**
-4. Выберите опцию **Link existing plugin**
-5. Укажите путь к файлу `manifest.json` из скачанного репозитория
+### Local installation (for development)
+
+1. Download or clone this repository
+2. Open Figma and create a new project or open an existing one
+3. Go to the menu **Plugins** -> **Development** -> **New Plugin...**
+4. Select the option **Link existing plugin**
+5. Specify the path to the `manifest.json` file from the downloaded repository
+
+## Usage
+
+### Design Preparation
+
+1. **Use frames instead of groups**
+   - All containers should be frames (Shift+A), not groups
+   - Apply fills directly to the frame, not to nested rectangles
+
+2. **Correctly name the root frame**
+   - The root frame must be named exactly "Overlay" or "Hud" (case-sensitive)
+
+3. **Set constraints properly**
+   - Use constraints to define how elements scale and position
+   - For horizontal: Left/Right/Center to anchor to edges, Scale to stretch width
+   - For vertical: Top/Bottom/Center to anchor to edges, Scale to stretch height
+
+4. **Prepare images and icons**
+   - Images: add them as fill for elements
+   - Icons: preferably use as a single vector shape (flatten) or PNG
+   - All images will be automatically exported and included in the code
+
+### UI Export
+
+1. Select the root frame in Figma (must be named "Overlay" or "Hud")
+2. Run the plugin via **Plugins** -> **Figma to Rust UI Exporter** -> **Export UI to Rust**
+3. Enable or disable image export as needed
+4. Click the "Export to Rust UI" button
+5. Copy the generated code or download it as a .cs file
+6. If images were exported, you can download them separately or as a ZIP archive
+
+## Integration with Rust
+
+The generated code includes:
+- All necessary UI elements with correct anchors and sizes
+- Embedded images in base64 format
+- A `CreateUI` function to display the UI
+- A `DestroyUI` function to remove the UI
+
+To use in a Rust plugin:
+1. Copy the code into your plugin’s C# file
+
+## Troubleshooting
+
+- **Export fails:** Check that the root frame is named "Overlay" or "Hud"
+- **Elements misaligned in UI:** Double-check constraint settings
+- **Missing icons:** Make sure they are properly prepared (vectors or PNG)
+- **Images not exporting:** Ensure they are applied as fill to the element
+- **Color issues:** Use standard colors in RGB or RGBA
 
 
 
-## Использование
 
-### Подготовка дизайна
-
-1. **Используйте фреймы вместо групп**
-   - Все контейнеры должны быть фреймами (Shift+A), а не группами
-   - Применяйте заливку непосредственно к фрейму, а не к вложенным прямоугольникам
-
-2. **Корректно назовите корневой фрейм**
-   - Корневой фрейм должен называться точно "Overlay" или "Hud" (с учетом регистра)
-
-3. **Настройте ограничения (constraints) правильно**
-   - Используйте ограничения для определения, как элементы будут масштабироваться и позиционироваться
-   - Для горизонтальных: Left/Right/Center для привязки к краям, Scale для растяжения по ширине
-   - Для вертикальных: Top/Bottom/Center для привязки к краям, Scale для растяжения по высоте
-
-4. **Подготовка изображений и иконок**
-   - Изображения: добавляйте их как заливку (fill) для элементов
-   - Иконки: лучше использовать в виде единой векторной формы (flatten) или PNG
-   - Все изображения будут автоматически экспортированы и включены в код
-
-### Экспорт UI
-
-1. Выберите корневой фрейм в Figma (должен называться "Overlay" или "Hud")
-2. Запустите плагин через меню **Plugins** -> **Figma to Rust UI Exporter** -> **Export UI to Rust**
-3. При необходимости включите/отключите экспорт изображений
-4. Нажмите кнопку "Экспортировать в Rust UI"
-5. Скопируйте сгенерированный код или скачайте его как .cs файл
-6. Если были экспортированы изображения, вы можете скачать их отдельно или как ZIP-архив
-
-## Интеграция с Rust
-
-Сгенерированный код включает в себя:
-- Все необходимые элементы UI с правильными якорями и размерами
-- Встроенные изображения в формате base64
-- Функцию `CreateUI` для отображения UI
-- Функцию `DestroyUI` для удаления UI
-
-Для использования в плагине Rust:
-1. Скопируйте код в свой C# файл плагина
-
-
-## Устранение неполадок
-
-- **Экспорт не удается:** Проверьте, что корневой фрейм называется "Overlay" или "Hud"
-- **Элементы смещены в UI:** Перепроверьте настройки ограничений (constraints)
-- **Отсутствуют иконки:** Убедитесь, что они правильно подготовлены (векторы или PNG)
-- **Изображения не экспортируются:** Убедитесь, что они применены как заливка (fill) элемента
-- **Проблемы с цветами:** Используйте стандартные цвета в RGB или RGBA
-
+## Translated By Nukedrust
