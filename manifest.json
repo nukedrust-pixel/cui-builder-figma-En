@@ -1,5 +1,5 @@
 {
-  "name": "Figma to Rust UI Exporter",
+  "name": "[EN] Figma to Rust UI Exporter",
   "id": "1453452362453262456345",
   "api": "1.0.0",
   "main": "code.js",
@@ -11,7 +11,7 @@
   "editorType": ["figma"],
   "menu": [
     {
-      "name": "Export UI to Rust",
+      "name": "[EN] Figma to Rust UI Exporter",
       "command": "export-ui"
     },
     {
